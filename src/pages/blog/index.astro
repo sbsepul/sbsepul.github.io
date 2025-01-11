@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<Layout title="blog">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-8">Blog</h1>
+    <div class="grid gap-8">
+      <BlogCard
+        client:load
+        title="My Vision AI Project"
+        description="How I built and deployed a computer vision model."
+        date="Jan 2, 2025"
+        slug="vision-ai-project"
+      />
+      <BlogCard
+        client:load
+        title="Understanding Data Engineering in Finance"
+        description="Analyzing complex financial data and building ETL pipelines."
+        date="Feb 15, 2025"
+        slug="data-engineering-finance"
+      />
+      {posts.map((post) => (
+        <BlogCard
+          client:load
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.pubDate.toLocaleDateString()}
+          slug={post.slug}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>
