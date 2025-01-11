@@ -13,7 +13,7 @@ const MenuItem = ({ href, children }: { href: string; children: React.ReactNode 
 
 const NavBar = () => {
   return (
-    <nav className="fixed w-full bg-dark-bg/80 backdrop-blur-sm z-50 py-4 text-sm">
+    <nav className="fixed w-full bg-transparent backdrop-blur-sm z-50 py-4 text-sm">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <motion.a 

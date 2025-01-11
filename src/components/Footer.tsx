@@ -3,10 +3,10 @@ import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
-    <footer className="py-4 mt-32 border-t">
+    <footer className="mt-12 flex w-full items-center justify-between pb-4 text-xs text-zinc-500">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-xs text-gray-600">
             © {new Date().getFullYear()} Sebastian Sepulveda. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-6">
