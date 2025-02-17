@@ -27,7 +27,7 @@ const NavBar = () => {
           <div className="space-x-6">
             <MenuItem href="/blog">blog</MenuItem>
             <MenuItem href="/photos" hidden>photos</MenuItem>
-            <MenuItem href="/cv">CV</MenuItem>
+            <MenuItem href="/cv_en.pdf">CV</MenuItem>
           </div>
         </div>
       </div>
