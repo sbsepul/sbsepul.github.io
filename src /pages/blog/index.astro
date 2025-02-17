@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<Layout title="blog | Seba Sepulveda">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-8">Blog</h1>
+    <div class="grid gap-8">
+      {posts.map((post) => (
+        <BlogCard
+          client:load
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.pubDate.toLocaleDateString()}
+          slug={post.slug}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,45 @@
+/* Variables en CSS */
+:root {
+  --duration: 5s;
+  --text-color: rgba(255, 255, 255, 0.3);
+  --bgr-color: #333;
+}
+
+.shining-text, .chrome {
+  font-size: 1em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.shining-text {
+  background: #222 linear-gradient(to right, #222 0%, #fff 50%, #222 100%) 0 0 no-repeat;
+  background-size: 150px;
+  color: var(--text-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine var(--duration) infinite linear;
+  text-shadow: 0 0px 0px rgba(234, 179, 8, 0.8);
+}
+
+.chrome {
+  background: #222 linear-gradient(-40deg, transparent 0%, transparent 40%, #fff 50%, transparent 60%, transparent 100%) 0 0 no-repeat;
+  background-size: 200px;
+  color: var(--text-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine var(--duration) infinite linear;
+  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes shine {
+  0%, 10% {
+    background-position: -500px;
+  }
+  50% {
+    background-position: top left;
+  }
+  100% {
+    background-position: 500px;
+  }
+}
