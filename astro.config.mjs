@@ -9,5 +9,4 @@ const site = 'https://sbsepul.github.io';
 export default defineConfig({
   integrations: [tailwind(), react(), mdx()],
   site: site,
-  base: 'src/',
 });
