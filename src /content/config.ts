@@ -7,6 +7,7 @@ const blogCollection = defineCollection({
     description: z.string(),
     pubDate: z.date(),
     author: z.string().default('Sebastian Sepulveda'),
+    coverImage: z.string().optional(),
   }),
 });
 

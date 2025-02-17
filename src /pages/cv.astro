@@ -1,23 +1,17 @@
 ---
+import SocialLinks from '../components/SocialLinks';
 import Layout from '../layouts/Layout.astro';
-import { FaXTwitter, FaGithub, FaLinkedin } from 'react-icons/fa6';
 ---
 
 <Layout title="CV | Seba Sepulveda">
   <div class="container mx-auto px-4 max-w-3xl py-16">
-    <h1 class="text-4xl font-bold mb-4">Curriculum Vitae</h1>
+    <h1 class="text-4xl font-bold mb-4">Sebastian Sepulveda</h1>
     <!-- add icons with links -->
-    <div class="flex space-x-4 mb-8">
-      <a href="https://x.com/sbsepul" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500">
-        <FaXTwitter class="w-6 h-6" />
-      </a>
-      <a href="https://github.com/sbsepul" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500">
-        <FaGithub class="w-6 h-6" />
-      </a>
-      <a href="https://linkedin.com/sebasepulveda" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500">
-        <FaLinkedin class="w-6 h-6" />
-      </a>
-    </div>
+      <SocialLinks
+      iconSize="w-6 h-6"
+      spacing="space-x-4"
+      color="text-gray-400 hover:text-gray-50"
+    />
     <!-- Last updated -->
     <p class="text-gray-400 mb-8">Last updated: January 2025</p>
 
