@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaXTwitter, FaGithub, FaLinkedin } from 'react-icons/fa6';
+import { FaXTwitter, FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa6';
 
 const socialLinks = [
   {
@@ -17,6 +17,11 @@ const socialLinks = [
     url: 'https://linkedin.com/in/sebasepulveda',
     icon: <FaLinkedin />,
   },
+  {
+    name: 'Telegram',
+    url: 'https://t.me/sbsepul?text=hola,%20como%20estas?',
+    icon: <FaTelegram />,
+  }
 ];
 
 export default function SocialLinks({
