@@ -19,7 +19,6 @@
     "@types/react-dom": "^18.2.19",
     "astro": "^4.16.18",
     "eslint": "^9.20.1",
-    "framer-motion": "^11.18.2",
     "lint": "^0.8.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
