@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Logo from '../images/logo.png';
 import SocialLinks from '../components/SocialLinks';
-import ProjectCard from '../components/ProjectCard';
+import ProjectCardCompact from '../components/ProjectCardCompact';
 import OvalGlowBox from '../components/OvalGlowBox';
 import ShiningText from '../components/ShiningText';
 
@@ -116,28 +116,41 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
       <div class="mt-12">
         <!-- Projects -->
-        <h2 class="text-xl font-bold mt-12 mb-4">Projects</h2>
-        <div class="grid grid-cols-1 gap-8">
-          <!-- Project 1 -->
-          <ProjectCard
-            title="Repetitive Archetypes Patterns Dataset"
-            description="Project focused on detecting and segmenting repetitive patterns on ancient Peruvian vessels using annotated 3D and 2D data, providing tools for data conversion, splitting, and visualization."
-            tags={['Python', 'Computer Vision', 'Detectron2', 'YOLOv8']}
-            href="https://github.com/sbsepul/Repetitive-Archetypes-Patterns-Dataset"
-          />
+        <h2 class="text-xl font-bold mt-12 mb-6">Projects</h2>
 
-          <!-- Project 2 -->
-          <div class="hidden bg-dark-bg p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-2">Vision AI: Retail Analytics</h3>
-            <p class="text-gray-400 mb-4">
-              An image recognition system that tracks customer behavior in stores.
-            </p>
-            <a
-              href="/vision-ai"
-              class="inline-block px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-            >
-              View Project
-            </a>
+        <!-- Web Apps Section -->
+        <div class="mb-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-emerald-400 text-lg">●</span>
+            <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Web Apps</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ProjectCardCompact
+              title="Dream Home"
+              description="Calculate your mortgage capacity for buying properties in Chile. Compare multiple homes and evaluate your credit needs."
+              icon="🏠"
+              accentColor="emerald"
+              tags={['Next.js', 'TypeScript', 'Finance']}
+              href="https://dream-home-pi.vercel.app/"
+            />
+          </div>
+        </div>
+
+        <!-- Research & Open Source Section -->
+        <div class="mb-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-violet-400 text-lg">●</span>
+            <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Research & Open Source</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ProjectCardCompact
+              title="Repetitive Patterns Dataset"
+              description="Detecting and segmenting repetitive patterns on ancient Peruvian vessels using annotated 3D and 2D data."
+              icon="🏺"
+              accentColor="violet"
+              tags={['Python', 'Computer Vision', 'Deep Learning']}
+              href="https://github.com/sbsepul/Repetitive-Archetypes-Patterns-Dataset"
+            />
           </div>
         </div>
       </div>
