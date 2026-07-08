@@ -3,9 +3,11 @@ import React from 'react';
 interface ProjectCardCompactProps {
   title: string;
   description: string;
+  impact?: string;
   href: string;
   icon: string;
   accentColor?: 'emerald' | 'violet' | 'amber' | 'rose' | 'sky';
+  status?: string;
   tags?: string[];
 }
 
@@ -45,9 +47,11 @@ const colorClasses = {
 const ProjectCardCompact: React.FC<ProjectCardCompactProps> = ({
   title,
   description,
+  impact,
   href,
   icon,
   accentColor = 'emerald',
+  status,
   tags = [],
 }) => {
   const colors = colorClasses[accentColor];
@@ -90,12 +94,24 @@ const ProjectCardCompact: React.FC<ProjectCardCompactProps> = ({
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="text-base font-semibold text-white mb-1 group-hover:text-gray-100 transition-colors">
-            {title}
-          </h3>
-          <p className="text-sm text-gray-400 line-clamp-2 mb-2">
+          <div className="mb-1 flex flex-wrap items-center gap-2">
+            <h3 className="text-base font-semibold text-white group-hover:text-gray-100 transition-colors">
+              {title}
+            </h3>
+            {status && (
+              <span className={`rounded-full border px-2 py-0.5 text-[11px] leading-tight ${colors.tag}`}>
+                {status}
+              </span>
+            )}
+          </div>
+          <p className="text-sm text-gray-400 mb-2">
             {description}
           </p>
+          {impact && (
+            <p className="mb-3 text-xs leading-relaxed text-gray-500">
+              {impact}
+            </p>
+          )}
 
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">

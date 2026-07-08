@@ -7,6 +7,7 @@ import SocialLinks from '../components/SocialLinks';
 import ProjectCardCompact from '../components/ProjectCardCompact';
 import OvalGlowBox from '../components/OvalGlowBox';
 import ShiningText from '../components/ShiningText';
+import { featuredProjects, projectCategories } from '../data/projects';
 
 const posts = await getCollection('blog').then((posts) => 
   posts.slice(0, 5)
@@ -19,7 +20,7 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
 ---
 
-<Layout title="Seba Sepulveda | Data Scientist">
+<Layout title="Seba Sepulveda | Data & AI Engineer">
   <div class="container mx-auto px-2">
     <div class="mx-auto py-16">
       <!-- Top section: Image (left) and Text (right) -->
@@ -40,9 +41,9 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
             iconSize="w-6 h-6" spacing="space-x-4" color="text-gray-400 hover:text-gray-100"
           />
           <p class="text-lg text-gray-300 mb-2">
-            A Chilean data scientist specializing in Vision AI, GenAI and Data Engineering. 
+            A Chilean data and AI engineer building local-first products, agent tooling and applied ML systems.
             <ShiningText
-              text="Feel free in follow me!">
+              text="Follow the work in progress.">
             </ShiningText>
           </p>
         </div>
@@ -76,16 +77,16 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
         <h2 class="text-xl font-bold mb-4">About Me</h2>
         <OvalGlowBox>
         <p class="text-gray-200 mb-4">
-          My friends call me Seba. <strong class="text-yellow-500">I have +3 years like a data engineer</strong> with a background in computer science and data science.
+          My friends call me Seba. <strong class="text-yellow-500">I work as a data engineer</strong> with a background in computer science, data science and applied AI.
         </p>
         <p class="text-gray-200 mb-4">
-          <strong class="text-yellow-400">I've worked in retail and insurance industry</strong> developing new data infrastructure and working with data team to deploy and improve machine learning models.
+          <strong class="text-yellow-400">Since June 2026 I have been working as a Data Engineer at Drimo - LATAM Airlines</strong>, developing ETL processes and automations on GCP with Dataform, Cloud Functions and BigQuery. Before that, I worked in retail and insurance, building data infrastructure, improving analytics workflows and collaborating with teams that deploy machine learning systems.
         </p>
         <p class="text-gray-200 mb-4">
-          In my last research, I was focused on <strong class="text-yellow-400">detection and segmentation in images</strong> using computer vision and deep learning techniques. Here, I was worked with ancient Peruvian vessels images to detect and segment repetitive patterns presents in them.
+          My research background is in <strong class="text-yellow-400">Vision AI for cultural heritage</strong>, including detection and segmentation of repetitive patterns in ancient Peruvian pottery.
         </p>
         <p class="text-gray-200 mb-4">
-          I'm always looking new challenges and constantly I'm learning about new technologies and tools to improve my skills. 
+          Recently I have been focused on product-shaped engineering: health tracking with Nuku, mortgage and property analysis with Dream Home, and portable AI-agent history with AI Memory Vault.
         </p>
         <p class="text-gray-200">
           When I'm not coding, you can find me playing football ⚽, cooking 👨‍🍳 or <a href="/photos/" class="hover:text-blue-300">taking photos</a>.
@@ -115,44 +116,42 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
       </div>
 
       <div class="mt-12">
-        <!-- Projects -->
         <h2 class="text-xl font-bold mt-12 mb-6">Projects</h2>
 
-        <!-- Web Apps Section -->
-        <div class="mb-8">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-emerald-400 text-lg">●</span>
-            <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Web Apps</h3>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ProjectCardCompact
-              title="Dream Home"
-              description="Calculate your mortgage capacity for buying properties in Chile. Compare multiple homes and evaluate your credit needs."
-              icon="🏠"
-              accentColor="emerald"
-              tags={['Next.js', 'TypeScript', 'Finance']}
-              href="https://dream-home-pi.vercel.app/"
-            />
-          </div>
-        </div>
+        {projectCategories.map((category) => {
+          const categoryProjects = featuredProjects.filter((project) => project.category === category);
 
-        <!-- Research & Open Source Section -->
-        <div class="mb-8">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-violet-400 text-lg">●</span>
-            <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Research & Open Source</h3>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ProjectCardCompact
-              title="Repetitive Patterns Dataset"
-              description="Detecting and segmenting repetitive patterns on ancient Peruvian vessels using annotated 3D and 2D data."
-              icon="🏺"
-              accentColor="violet"
-              tags={['Python', 'Computer Vision', 'Deep Learning']}
-              href="https://github.com/sbsepul/Repetitive-Archetypes-Patterns-Dataset"
-            />
-          </div>
-        </div>
+          if (categoryProjects.length === 0) {
+            return null;
+          }
+
+          return (
+            <div class="mb-8">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="text-emerald-400 text-lg">●</span>
+                <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">{category}</h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {categoryProjects.map((project) => (
+                  <ProjectCardCompact
+                    title={project.title}
+                    description={project.description}
+                    impact={project.impact}
+                    icon={project.icon}
+                    accentColor={project.accentColor}
+                    status={project.status}
+                    tags={project.tags}
+                    href={project.href}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        <a href="/projects" class="inline-block text-sm text-gray-400 hover:text-yellow-400 transition-colors">
+          View all projects -&gt;
+        </a>
       </div>
       
     </div>

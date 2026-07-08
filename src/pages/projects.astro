@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCardCompact from '../components/ProjectCardCompact';
+import { projects, projectCategories } from '../data/projects';
+---
+
+<Layout title="Projects | Seba Sepulveda">
+  <div class="container mx-auto px-4 max-w-3xl py-16">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold mb-4">Projects</h1>
+      <p class="text-gray-300">
+        A working inventory of products, AI tooling, data systems and research projects I am building or maintaining.
+      </p>
+    </header>
+
+    {projectCategories.map((category) => {
+      const categoryProjects = projects.filter((project) => project.category === category);
+
+      if (categoryProjects.length === 0) {
+        return null;
+      }
+
+      return (
+        <section class="mb-12">
+          <div class="mb-4 flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-bold">{category}</h2>
+            <span class="text-sm text-gray-500">{categoryProjects.length} projects</span>
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            {categoryProjects.map((project) => (
+              <ProjectCardCompact
+                title={project.title}
+                description={project.description}
+                impact={project.impact}
+                icon={project.icon}
+                accentColor={project.accentColor}
+                status={project.status}
+                tags={project.tags}
+                href={project.href}
+              />
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</Layout>

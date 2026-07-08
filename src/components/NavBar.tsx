@@ -25,6 +25,8 @@ const NavBar = () => {
             sbsepul
           </motion.a>
           <div className="space-x-6">
+            <MenuItem href="/projects">projects</MenuItem>
+            <MenuItem href="/cv">cv</MenuItem>
             <MenuItem href="/blog">blog</MenuItem>
             <MenuItem href="/photos" hidden>photos</MenuItem>
           </div>
