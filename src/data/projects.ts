@@ -28,7 +28,7 @@ export const projects: Project[] = [
     icon: '+',
     accentColor: 'rose',
     tags: ['Next.js', 'PostgreSQL', 'Prisma', 'Telegram'],
-    href: '/projects/nuku',
+    href: 'https://health-trackerweb-production.up.railway.app/login',
     featured: true,
   },
   {
