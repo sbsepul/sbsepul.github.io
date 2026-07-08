@@ -1,189 +1,52 @@
 ---
 import SocialLinks from '../components/SocialLinks';
 import Layout from '../layouts/Layout.astro';
+
+const email = 'sbsepul@gmail.com';
+const cvRequestHref = `mailto:${email}?subject=${encodeURIComponent('Solicitud de CV - Sebastian Sepulveda')}&body=${encodeURIComponent('Hola Sebastian,\n\nMe gustaria solicitar tu CV actualizado.\n\nSaludos.')}`;
 ---
 
 <Layout title="CV | Seba Sepulveda">
   <div class="container mx-auto px-4 max-w-3xl py-16">
-    <h1 class="text-4xl font-bold mb-4">Sebastian Sepulveda</h1>
-    <!-- add icons with links -->
-      <SocialLinks
+    <p class="text-sm font-medium text-yellow-400 uppercase tracking-wider mb-3">Data & AI Engineer</p>
+    <h1 class="text-4xl font-bold mb-4">Request my CV</h1>
+    <SocialLinks
       iconSize="w-6 h-6"
       spacing="space-x-4"
       color="text-gray-400 hover:text-gray-50"
     />
-    <!-- Last updated -->
-    <p class="text-gray-400 mb-8">Last updated: July 2026</p>
+    <p class="text-gray-400 mb-8">Updated profile: July 2026</p>
 
-    <!-- Education -->
+    <section class="mb-10 border border-gray-800 rounded-lg p-6 bg-gray-950/40">
+      <p class="text-xl text-gray-100 mb-4">
+        I keep my full CV available by request so I can share the most relevant and up-to-date version for each opportunity.
+      </p>
+      <p class="text-gray-300 mb-6">
+        I currently work as a Data Engineer at Drimo - LATAM Airlines, building ETL processes and automations on GCP with Dataform, Cloud Functions and BigQuery. My background includes data platforms, applied AI, computer vision research and product engineering.
+      </p>
+      <a
+        href={cvRequestHref}
+        class="inline-block px-6 py-3 border border-yellow-500 text-yellow-300 rounded-lg hover:bg-yellow-500 hover:text-gray-950 transition-colors"
+      >
+        Request CV by email
+      </a>
+      <p class="text-sm text-gray-500 mt-4">
+        Email: <a href={`mailto:${email}`} class="hover:text-yellow-400">{email}</a>
+      </p>
+    </section>
+
     <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Education</h2>
-      <div class="border-l-2 border-gray-200 pl-4">
-        <div class="mb-6">
-          <!-- Top row with title & date -->
-          <div class="flex justify-between">
-            <div>
-              <h3 class="text-xl font-semibold">M.Sc. in Data Science & Computer Science</h3>
-              <p class="text-gray-300">University of Chile</p>
-            </div>
-            <!-- Date on the right -->
-            <p class="text-gray-200">2022 - 2024</p>
-          </div>
-
-          <!-- Optional bullet points below -->
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Specializations in Machine Learning, Deep Learning, Big Data</li>
-            <li>Graduated with honors, focusing on applied Vision AI research</li>
-          </ul>
+      <h2 class="text-2xl font-bold mb-4">Profile snapshot</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+        <div class="border-l-2 border-gray-700 pl-4">
+          <h3 class="font-semibold text-gray-100 mb-2">Core work</h3>
+          <p>Data engineering, GCP automation, analytics workflows, AI-assisted development and production-oriented ML systems.</p>
+        </div>
+        <div class="border-l-2 border-gray-700 pl-4">
+          <h3 class="font-semibold text-gray-100 mb-2">Public projects</h3>
+          <p>Nuku, Dream Home, AI Memory Vault and Vision AI research for cultural heritage.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Experience</h2>
-      <div class="border-l-2 border-gray-200 pl-4">
-
-        <div class="mb-6">
-          <!-- Top row with title & date -->
-          <div class="flex justify-between gap-4">
-            <div>
-              <h3 class="text-xl font-semibold">Data Engineer</h3>
-              <p class="text-gray-300">Drimo - LATAM Airlines</p>
-            </div>
-            <!-- Date on the right -->
-            <p class="text-gray-200">June 2026 - Present</p>
-          </div>
-
-          <!-- Optional bullet points below -->
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Developing ETL processes and automations on Google Cloud Platform using Dataform, Cloud Functions and BigQuery.</li>
-            <li>Building and improving data workflows for analytics and operational use cases in the airline domain.</li>
-          </ul>
-        </div>
-
-        <div class="mb-6">
-          <!-- Top row with title & date -->
-          <div class="flex justify-between gap-4">
-            <div>
-              <h3 class="text-xl font-semibold">Data Engineer</h3>
-              <p class="text-gray-300">Falabella Retail S.A.</p>
-            </div>
-            <!-- Date on the right -->
-            <p class="text-gray-200">Aug 2022 - June 2026</p>
-          </div>
-
-          <!-- Optional bullet points below -->
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Developed and maintained production data pipelines for retail analytics workflows</li>
-            <li>Implemented cloud-based data solutions using GCP</li>
-            <li>Optimized BigQuery-based data processing workflows</li>
-            <li>Collaborated with cross-functional teams to integrate and improve machine learning systems</li>
-            <li>Prepared and led an internal workshop on Claude Code and Codex, covering harness engineering patterns, reusable skills, MCP integrations, and task delegation with agents and subagents.</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <h3 class="font-semibold mb-2">Programming Languages</h3>
-          <ul class="list-disc list-inside text-gray-400">
-            <li>Python</li>
-            <li>TypeScript</li>
-            <li>SQL</li>
-            <li>Java</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2">Technologies & Tools</h3>
-          <ul class="list-disc list-inside text-gray-400">
-            <li>GCP, BigQuery, Dataform, Cloud Functions, Spark</li>
-            <li>Next.js, React, Tailwind CSS</li>
-            <li>PostgreSQL, Prisma, Zod</li>
-            <li>FastAPI, Docker, agent tooling</li>
-            <li>TensorFlow, PyTorch, computer vision</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interests -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Interests</h2>
-      <ul class="list-disc list-inside text-gray-400 ml-4">
-        <li>AI agents, developer tools and portable engineering memory</li>
-        <li>Local-first products for health, finance and real estate</li>
-        <li>Vision AI, cultural heritage and applied machine learning research</li>
-      </ul>
-    </section>
-
-    <!-- Projects (Optional) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Projects</h2>
-      <div class="border-l-2 border-gray-200 pl-4">
-        <div class="mb-6">
-          <div class="flex justify-between gap-4">
-            <div>
-              <h3 class="text-xl font-semibold">
-                <a href="https://health-trackerweb-production.up.railway.app/login" class="hover:text-yellow-400" target="_blank" rel="noopener noreferrer">
-                  Nuku
-                </a>
-              </h3>
-              <p class="text-gray-300">Local-first health tracker</p>
-            </div>
-            <p class="text-gray-200">2026</p>
-          </div>
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Built a self-hosted family health app for blood pressure, glucose and insulin records</li>
-            <li>Implemented a Next.js monorepo with PostgreSQL, Prisma, charts, Excel export and optional Telegram bot</li>
-          </ul>
-        </div>
-        <div class="mb-6">
-          <div class="flex justify-between gap-4">
-            <div>
-              <h3 class="text-xl font-semibold">
-                <a href="https://dream-home-pi.vercel.app/" class="hover:text-yellow-400" target="_blank" rel="noopener noreferrer">
-                  Dream Home
-                </a>
-              </h3>
-              <p class="text-gray-300">Mortgage and property analysis app</p>
-            </div>
-            <p class="text-gray-200">2026</p>
-          </div>
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Built a Chile-focused home buying tool for affordability simulation, UF values and property comparison</li>
-            <li>Implemented geocoding, map views, quotation workflows and property data exports</li>
-          </ul>
-        </div>
-        <div class="mb-6">
-          <div class="flex justify-between gap-4">
-            <div>
-              <h3 class="text-xl font-semibold">AI Memory Vault</h3>
-              <p class="text-gray-300">Open source developer tooling</p>
-            </div>
-            <p class="text-gray-200">2026</p>
-          </div>
-          <ul class="list-disc list-inside mt-2 text-gray-400">
-            <li>Built a Python CLI for extracting, searching, exporting, backing up and restoring AI coding agent sessions</li>
-            <li>Designed a portable model for Claude Code, Codex CLI and future agent sources</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Languages</h2>
-      <ul class="list-disc list-inside text-gray-400 ml-4">
-        <li>Spanish (Native)</li>
-        <li>French (Intermediate)</li>
-        <li>English (Proficient)</li>
-      </ul>
     </section>
 
   </div>
