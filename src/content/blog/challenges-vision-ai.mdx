@@ -1,10 +1,104 @@
 ---
-title: "Challenges and opportunities in Archeology with Vision AI"
-description: "A brief overview of the challenges and opportunities in Archeology with Vision AI"
+title: "Vision AI for cultural heritage is not a demo problem"
+description: "What changes when computer vision is used to study archaeological textures, and how this research can support other visual review workflows."
 pubDate: 2024-10-15
 layout: "../../layouts/BlogPost.astro"
 ---
 
-In recent years, the use of Vision AI in the field of archeology has become increasingly popular. 
-This technology has the potential to revolutionize the way archeologists work, 
-offering new tools and methods to analyze and interpret historical sites and artifacts.
+Most Vision AI demos are clean. A model sees a clear object, draws a box and the result looks obvious.
+
+Cultural heritage data is not like that.
+
+When I worked on repetitive pattern recognition in ancient Peruvian pottery, the hard part was not only training a model. The hard part was using computer vision without pretending that the model understood archaeology.
+
+## The research problem
+
+The goal was to identify repeated decorative motifs in pottery textures.
+
+That sounds like object detection, but the context changes everything. The image is not a neutral input. It may come from a photograph, a texture extracted from a 3D object, a crop selected by a researcher or a surface affected by erosion and missing fragments.
+
+The model is looking at a representation of an artifact. That means its output must be treated carefully.
+
+For me, the useful question was:
+
+Can a model help researchers inspect visual repetition faster?
+
+Not: can the model replace interpretation?
+
+## What the model is good for
+
+The model is useful as an attention tool.
+
+It can scan textures and suggest areas where repeated motifs may appear. That reduces the time spent searching manually and gives researchers a starting point for review.
+
+The most useful output is not “this is the final answer.” The most useful output is “look here first.”
+
+That difference is important. It keeps the workflow honest.
+
+## Why this is harder than a normal dataset
+
+Archaeological visual data has ambiguity built in.
+
+A motif may be damaged. A line may be decorative noise or part of a figure. A repeated shape may appear at a different scale. A texture seam may create a false visual pattern.
+
+That makes annotation a research decision, not only a labeling task.
+
+If two experts disagree about a region, the dataset should not hide that uncertainty. The model will learn from whatever rule is written down.
+
+## How I used it
+
+I treated the model as part of a review loop:
+
+1. Train on annotated motifs.
+2. Run predictions over texture images.
+3. Review high confidence and low confidence results.
+4. Identify repeated mistakes.
+5. Improve annotation rules and dataset examples.
+
+This is where the work becomes interesting. The model helps reveal weak parts of the dataset and unclear parts of the visual definition.
+
+## How other projects can use the same idea
+
+This research pattern can transfer to many domains where experts inspect repeated visual structures:
+
+- textile analysis
+- ceramic fragment comparison
+- historical document ornament review
+- industrial defect grouping
+- satellite texture exploration
+- museum collection search
+
+The shared idea is simple: use computer vision to surface candidates, then keep expert review in the loop.
+
+## What I recommend
+
+Start narrow. Pick one visual pattern and make the review process useful before expanding classes.
+
+The first milestone should be a tool that lets someone inspect predictions quickly. A model with a strong metric but a poor review workflow is not very useful.
+
+I would prioritize:
+
+- clear annotation rules
+- examples of ambiguous cases
+- review of false positives
+- review of missed motifs
+- visual comparison across similar artifacts
+
+That is where research value appears.
+
+## What feels innovative
+
+The innovation is not that a neural network can detect patterns. The innovation is turning visual recognition into a research assistant that helps organize evidence.
+
+It can compress the search layer. It can reveal where definitions are weak. It can help compare collections. But it should not claim authority over cultural interpretation.
+
+That balance is the part I care about.
+
+## References
+
+- [Repetitive Patterns Recognition in Textures of Ancient Peruvian Pottery](https://doi.org/10.1145/3694789)
+- [ACM Journal on Computing and Cultural Heritage](https://dl.acm.org/journal/jocch)
+- [Ultralytics training docs](https://docs.ultralytics.com/modes/train/)
+- [Ultralytics detection dataset docs](https://docs.ultralytics.com/datasets/detect/)
+
+The strongest version of this work is not a demo. It is a review system that makes visual evidence easier to inspect and question.

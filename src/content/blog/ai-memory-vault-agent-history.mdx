@@ -1,0 +1,123 @@
+---
+title: "AI Memory Vault keeps coding agent history useful"
+description: "The problem of losing useful engineering context inside coding agent sessions, and how AI Memory Vault turns that history into searchable memory."
+pubDate: 2026-07-10
+layout: "../../layouts/BlogPost.astro"
+---
+
+AI coding agents create a new kind of engineering artifact: the session.
+
+A session is not just a chat. It can contain a plan, commands, failed attempts, file paths, decisions, reviews and the reason a change happened. That information is useful, but it usually stays trapped inside one tool.
+
+That is the problem behind AI Memory Vault.
+
+## The problem is disappearing context
+
+When I use coding agents for real repository work, I often want to recover things later:
+
+- where did I solve a similar error?
+- what command fixed a build?
+- why did I choose one implementation over another?
+- which repo had the best version of a workflow?
+- what did I learn from a long debugging session?
+
+Normal terminal history cannot answer that. A chat transcript can help, but only if I remember where it happened.
+
+The more agents I use, the more fragmented that memory becomes.
+
+## What AI Memory Vault is trying to solve
+
+AI Memory Vault is a public tool for extracting, searching, exporting, backing up and restoring coding agent sessions.
+
+The idea is simple: sessions should be portable.
+
+Claude Code, Codex and other tools can have different storage formats, but the useful memory inside those sessions should be searchable from one place.
+
+The product should answer:
+
+- what sessions exist?
+- which workspace did they belong to?
+- what topic or task were they about?
+- where does a specific error or decision appear?
+- can I export this into Markdown and keep it with my docs?
+
+That makes the history operational instead of archival.
+
+## How I use the idea
+
+I use agents as part of my engineering workflow, not just for one-off prompts. That means the sessions contain real project context.
+
+AI Memory Vault is my way of treating that context as something worth keeping.
+
+The most useful flow is:
+
+1. Extract sessions from agent tools.
+2. Normalize them into one local database.
+3. Search before starting similar work.
+4. Export valuable sessions to Markdown.
+5. Back up the memory.
+
+The goal is not perfect recall. The goal is to avoid rediscovering the same thing twice.
+
+## The model is intentionally small
+
+The core data shape does not need to be complex.
+
+```python
+class AgentSession:
+    id: str
+    source: str
+    title: str
+    workspace: str | None
+    messages: list[str]
+```
+
+That is enough to start. The important decision is separating the source tool from the session model. If the model is portable, new extractors can be added without changing the whole product.
+
+## Why search matters more than summaries
+
+Summaries are useful, but search is the first feature I care about.
+
+If I search for `Dataform`, `Vercel deploy`, `Prisma migration` or `latex build`, I want to find sessions where that problem appeared. I want the surrounding context, not just a generated sentence.
+
+SQLite FTS5 is a good fit because the data can stay local and full text search is fast enough for this use case.
+
+## What others can reuse
+
+This pattern is useful for anyone working heavily with AI coding agents.
+
+It can support:
+
+- personal engineering memory
+- debugging journals
+- migration notes
+- architecture decision recovery
+- onboarding notes generated from real work
+- comparisons between agent workflows
+
+The broader idea is that agent sessions are not disposable. They are evidence of how work happened.
+
+## What I would build next
+
+The next useful layer is not more AI. It is better retrieval.
+
+I would focus on:
+
+- tagging sessions by repo and task
+- filtering by tool source
+- exporting selected sessions into project docs
+- linking sessions to commits
+- detecting repeated errors
+
+After that, AI summaries become more useful because they can be grounded in searchable history.
+
+## References
+
+- [AI Memory Vault public repository](https://github.com/sbsepul/ai-memory-vault)
+- [SQLite FTS5](https://www.sqlite.org/fts5.html)
+- [Claude Code hooks](https://code.claude.com/docs/en/hooks)
+- [Claude Code commands](https://code.claude.com/docs/en/commands)
+- [Codex agent skills](https://developers.openai.com/codex/skills)
+- [Codex subagents](https://developers.openai.com/codex/subagents)
+
+AI Memory Vault is useful because it treats agent work as engineering memory. That memory becomes more valuable as agents become more involved in real projects.

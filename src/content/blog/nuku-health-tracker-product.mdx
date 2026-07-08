@@ -1,0 +1,104 @@
+---
+title: "Nuku turns family health tracking into a workflow"
+description: "The problem behind Nuku, why family health records become messy, and how the product tries to make daily care easier to coordinate."
+pubDate: 2026-07-08
+layout: "../../layouts/BlogPost.astro"
+---
+
+Nuku starts from a simple problem: health records in a family are often scattered.
+
+Someone writes blood pressure in a notebook. Someone else sends a glucose value through WhatsApp. Insulin doses are remembered from habit. A doctor appointment arrives and the family tries to reconstruct the last few weeks from messages, photos and memory.
+
+That is not a data problem in the abstract. It is a care problem.
+
+## The problem is coordination
+
+Most health tracking apps are designed for one person tracking their own body. That can work for fitness, habits or personal dashboards. Family care is different.
+
+In a family context, the person who records the information is not always the patient. Several people may help. The record has to be fast enough to enter during a normal day and clear enough to review later.
+
+The product has to answer questions like:
+
+- who is this record for?
+- what was measured?
+- when was it measured?
+- what happened today?
+- what should we bring to the next appointment?
+
+If the system does not answer those questions, people go back to notes and chat messages.
+
+## What Nuku is trying to solve
+
+Nuku is a health tracker for families. The public app focuses on the basic workflow: create an account, manage patient records and keep health measurements organized.
+
+The product is not trying to be a hospital system. It is trying to make the daily work of recording and reviewing easier.
+
+The core idea is:
+
+1. Each patient has their own record.
+2. Measurements are structured by type.
+3. The dashboard makes the day visible.
+4. Historical records can be reviewed or exported.
+
+That sounds simple, but it is exactly the layer many families are missing.
+
+## How I think about the product
+
+For me, Nuku is a way to explore how small software can support real care workflows without becoming heavy.
+
+The first useful version is not AI powered diagnosis. It is clean memory.
+
+If the product can reliably answer “what happened this week?” it already creates value. If it can export that history for a doctor appointment, it creates even more value.
+
+That is why I think the most important product decisions are boring in a good way:
+
+- clear patient separation
+- fast data entry
+- simple trend views
+- readable summaries
+- exportable records
+
+Those choices make the product useful before adding advanced features.
+
+## Where AI could help
+
+AI can be useful, but only with the right boundary.
+
+The safe use case is summarization. For example: take the last 30 days of records and produce a short caregiver summary that says what is missing, what changed and what questions may be worth asking a clinician.
+
+The wrong use case is pretending to diagnose or adjust treatment.
+
+I want Nuku to stay on the useful side of that line. The product can organize information and make patterns easier to read. Medical decisions should stay with professionals and families.
+
+## How others could use this idea
+
+The same pattern works in many care situations:
+
+- chronic condition tracking
+- elder care logs
+- medication adherence records
+- post surgery recovery notes
+- caregiver coordination between relatives
+
+The important lesson is not the tech stack. It is the product framing. Start with the real coordination problem, then build the smallest system that keeps the history trustworthy.
+
+## What I would build next
+
+The next improvements should make the product more useful at the moment of review:
+
+- clearer weekly summaries
+- printable or exportable reports
+- better mobile input
+- simple anomaly flags without alarmist language
+- demo data for explaining the product safely
+
+That keeps the product grounded in the actual workflow.
+
+## References
+
+- [American Heart Association: monitoring blood pressure at home](https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/monitoring-your-blood-pressure-at-home)
+- [CDC: living with diabetes](https://www.cdc.gov/diabetes/living-with/index.html)
+- [Prisma with Next.js](https://www.prisma.io/docs/guides/frameworks/nextjs)
+- [Recharts](https://recharts.github.io/)
+
+Nuku is interesting because it treats health tracking as shared work. The innovation is not a chart. It is making the family care loop easier to run.

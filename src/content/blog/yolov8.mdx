@@ -1,8 +1,117 @@
 ---
-title: "Quick start guide to train a YOLOv11 model with custom dataset"
-description: "A quick guide to train a YOLOv11 model with a custom dataset"
+title: "Training YOLO without treating it like magic"
+description: "Why a useful YOLO project depends more on dataset review than on a single training command."
 pubDate: 2025-02-01
 layout: "../../layouts/BlogPost.astro"
 ---
 
-The YOLO models are a series of object detection models that have been widely used in the field of computer vision. In this post, I will show you how to train a YOLOv8 model with a custom dataset using the [Ultralytics YOLOv11](https://github.com/ultralytics/ultralytics) repository.
+YOLO is fast enough that object detection can feel solved after one command.
+
+That is misleading.
+
+The model can train quickly, but the real work is deciding what the model should learn, reviewing where it fails and improving the dataset. A custom detector is only as useful as the loop around it.
+
+## The problem with many demos
+
+Most object detection demos show the exciting part: boxes appearing on an image.
+
+They usually hide the part that decides whether the project will work:
+
+- how the dataset was collected
+- how ambiguous examples were labeled
+- how false positives were reviewed
+- how classes were defined
+- how the team decided what failure matters
+
+Without those decisions, the model is only a screenshot generator.
+
+## How I think about a custom YOLO project
+
+I start with failure.
+
+Before choosing a model size, I want to know what mistake would make the system useless. Missing a rare object is different from confusing two similar classes. Detecting shadows is different from failing on small objects.
+
+That failure defines the review process.
+
+The training command is secondary.
+
+```python
+from ultralytics import YOLO
+
+model = YOLO("yolo11n.pt")
+model.train(data="dataset.yaml", epochs=100, imgsz=960)
+```
+
+This is enough to start a baseline. It is not enough to trust the result.
+
+## Dataset review is the real workflow
+
+After the first model, I care about reviewing predictions.
+
+I want to know:
+
+- what did the model miss?
+- what did it hallucinate?
+- which class is confused?
+- which images are too easy?
+- which examples should be added next?
+
+That review becomes the next dataset task.
+
+For example:
+
+```text
+Image 018
+Problem: missed small object
+Next action: add more small examples and test higher resolution
+
+Image 044
+Problem: false positive on shadow
+Next action: collect negative examples with similar lighting
+```
+
+This is more useful than only looking at mAP. Metrics point in a direction. Review explains what to do.
+
+## How this connects to my research
+
+In cultural heritage work, the same principle applies. The model is not the project. The review loop is the project.
+
+When detecting visual motifs, the model can reveal where the dataset is unclear. A false positive may show that the annotation rules are weak. A missed region may show that the motif definition is too narrow.
+
+That is why I see YOLO as a fast feedback tool. It helps move between data, model and review quickly.
+
+## How I recommend using it
+
+Use YOLO to accelerate learning about your dataset.
+
+The practical sequence:
+
+1. Build a small dataset.
+2. Train a baseline.
+3. Review predictions manually.
+4. Write down failure types.
+5. Improve the dataset based on those failures.
+6. Train again.
+
+Only after that would I spend time comparing model sizes or export formats.
+
+## Where others can apply the method
+
+This approach works for more than object detection:
+
+- segmentation projects
+- OCR review
+- defect detection
+- medical image triage
+- document layout analysis
+- visual search in collections
+
+The common pattern is feedback. The model makes mistakes visible. The team uses those mistakes to improve the system.
+
+## References
+
+- [Ultralytics train mode](https://docs.ultralytics.com/modes/train/)
+- [Ultralytics object detection datasets](https://docs.ultralytics.com/datasets/detect/)
+- [Ultralytics main docs](https://docs.ultralytics.com/)
+
+The useful version of YOLO is not a magic command. It is a fast way to build a better dataset and a better review workflow.
