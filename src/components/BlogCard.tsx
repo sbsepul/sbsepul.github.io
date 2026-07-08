@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaCalendar, FaArrowRight } from 'react-icons/fa6';
 
 interface BlogCardProps {
@@ -11,10 +10,7 @@ interface BlogCardProps {
 
 const BlogCard = ({ title, description, date, slug }: BlogCardProps) => {
   return (
-    <motion.article
-      className="border border-dark-muted rounded-lg p-6 hover:border-dark-accent transition-colors"
-      whileHover={{ scale: 1.02 }}
-    >
+    <article className="group border border-dark-muted rounded-lg p-6 hover:border-dark-accent transition-[border-color,transform] duration-200 hover:scale-[1.02]">
       <h2 className="text-2xl font-bold mb-2">
         <a href={`/blog/${slug}`} className="hover:text-dark-accent transition-colors">
           {title}
@@ -26,11 +22,11 @@ const BlogCard = ({ title, description, date, slug }: BlogCardProps) => {
           <FaCalendar className="mr-2" />
           <span className="text-sm">{date}</span>
         </div>
-        <motion.div whileHover={{ x: 4 }}>
+        <div className="transition-transform duration-200 group-hover:translate-x-1">
           <FaArrowRight className="text-dark-muted hover:text-dark-accent transition-colors" />
-        </motion.div>
+        </div>
       </div>
-    </motion.article>
+    </article>
   );
 };
 

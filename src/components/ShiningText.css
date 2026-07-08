@@ -13,6 +13,9 @@
 }
 
 .shining-text {
+  /* inline-block + contain: paint limita el repintado de la animación al área del texto */
+  display: inline-block;
+  contain: paint;
   background: #222 linear-gradient(to right, #222 0%, #fff 50%, #222 100%) 0 0 no-repeat;
   background-size: 150px;
   color: var(--text-color);
@@ -30,6 +33,14 @@
   -webkit-text-fill-color: transparent;
   animation: shine var(--duration) infinite linear;
   text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shining-text, .chrome {
+    animation: none;
+    -webkit-text-fill-color: currentColor;
+    color: #fff;
+  }
 }
 
 @keyframes shine {
