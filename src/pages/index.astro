@@ -19,12 +19,12 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
 ---
 
 <Layout title="Seba Sepulveda | Data & AI Engineer">
-  <div class="container mx-auto px-2">
-    <div class="mx-auto py-16">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto py-8 sm:py-16">
       <!-- Top section: Image (left) and Text (right) -->
-      <div class="flex items-center gap-8">
+      <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center sm:text-left">
         <!-- Image -->
-        <div class="w-48 h-48 rounded-full overflow-hidden flex-shrink-0 border-2 border-dark-accent bg-gray-900">
+        <div class="w-32 h-32 sm:w-48 sm:h-48 rounded-full overflow-hidden flex-shrink-0 border-2 border-dark-accent bg-gray-900">
           <img
             src="/me-avatar-color.jpeg"
             alt="Seba Sepulveda"
@@ -33,13 +33,15 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
         </div>
 
         <!-- Text -->
-        <div class="text-left">
+        <div>
           <p class="text-sm font-medium text-yellow-400 uppercase tracking-wider mb-2">Data & AI Engineer</p>
-          <h1 class="text-3xl font-normal mb-2">Hi, I'm Sebastian Sepulveda</h1>
-          <SocialLinks 
-            iconSize="w-6 h-6" spacing="space-x-4" color="text-gray-400 hover:text-gray-100"
-          />
-          <p class="text-lg text-gray-300 mb-3 max-w-2xl">
+          <h1 class="text-2xl sm:text-3xl font-normal mb-2">Hi, I'm Sebastian Sepulveda</h1>
+          <div class="flex justify-center sm:justify-start">
+            <SocialLinks
+              iconSize="w-6 h-6" spacing="space-x-4" color="text-gray-400 hover:text-gray-100"
+            />
+          </div>
+          <p class="text-base sm:text-lg text-gray-300 mb-3 max-w-2xl">
             I build data platforms, AI-assisted workflows and product experiments that turn messy operational problems into systems people can actually use.
             <ShiningText
               text="Follow the work in progress.">
@@ -68,9 +70,9 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
           <ul class="space-y-4">
             {posts.map((post) => (
               <li>
-                <a href={`blog/${post.slug}`} class="flex items-center justify-between transition-colors duration-300 hover:text-yellow-400">
+                <a href={`blog/${post.slug}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 transition-colors duration-300 hover:text-yellow-400">
                   <h3>{post.data.title}</h3>
-                  <time class="text-gray-400 text-sm">{post.data.pubDate.toLocaleDateString("en-US", options)}</time>
+                  <time class="text-gray-400 text-sm shrink-0">{post.data.pubDate.toLocaleDateString("en-US", options)}</time>
                 </a>
               </li>
             ))}

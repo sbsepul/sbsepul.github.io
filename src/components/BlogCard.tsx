@@ -10,8 +10,8 @@ interface BlogCardProps {
 
 const BlogCard = ({ title, description, date, slug }: BlogCardProps) => {
   return (
-    <article className="group border border-dark-muted rounded-lg p-6 hover:border-dark-accent transition-[border-color,transform] duration-200 hover:scale-[1.02]">
-      <h2 className="text-2xl font-bold mb-2">
+    <article className="group border border-dark-muted rounded-lg p-4 sm:p-6 hover:border-dark-accent transition-[border-color,transform] duration-200 hover:scale-[1.02]">
+      <h2 className="text-xl sm:text-2xl font-bold mb-2">
         <a href={`/blog/${slug}`} className="hover:text-dark-accent transition-colors">
           {title}
         </a>

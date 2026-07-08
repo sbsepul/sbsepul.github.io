@@ -10,8 +10,8 @@ const posts = (await getCollection('blog')).sort(
 
 <Layout title="blog | Seba Sepulveda">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Blog</h1>
-    <div class="grid gap-8">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-8">Blog</h1>
+    <div class="grid gap-6 sm:gap-8">
       {posts.map((post) => (
         <BlogCard
           title={post.data.title}
