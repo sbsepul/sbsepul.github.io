@@ -12,7 +12,6 @@ const posts = await getCollection('blog');
     <div class="grid gap-8">
       {posts.map((post) => (
         <BlogCard
-          client:load
           title={post.data.title}
           description={post.data.description}
           date={post.data.pubDate.toLocaleDateString()}
