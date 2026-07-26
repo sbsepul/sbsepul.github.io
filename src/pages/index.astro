@@ -65,32 +65,70 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
         </a>
       </div>
 
-      <h2 class="text-xl font-bold mb-6 mt-8">My latest posts</h2>
+      <div class="mt-8">
+        <!-- Projects -->
+        <h2 class="text-xl font-bold mb-6">Projects</h2>
+
+        {projectCategories.map((category) => {
+          const categoryProjects = featuredProjects.filter((project) => project.category === category);
+
+          if (categoryProjects.length === 0) {
+            return null;
+          }
+
+          return (
+            <div class="mb-8">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="text-emerald-400 text-lg">●</span>
+                <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">{category}</h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {categoryProjects.map((project) => (
+                  <ProjectCardCompact
+                    title={project.title}
+                    description={project.description}
+                    impact={project.impact}
+                    icon={project.icon}
+                    logo={project.logo}
+                    accentColor={project.accentColor}
+                    status={project.status}
+                    tags={project.tags}
+                    href={project.href}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        <a href="/projects" class="inline-block text-sm text-gray-400 hover:text-yellow-400 transition-colors">
+          View all projects -&gt;
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold mb-6 mt-12">My latest posts</h2>
         <div class="mt-4">
-          <ul class="space-y-4">
+          <ul class="space-y-2">
             {posts.map((post) => (
               <li>
-                <a href={`blog/${post.slug}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 transition-colors duration-300 hover:text-yellow-400">
+                <a href={`blog/${post.slug}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5 sm:gap-4 text-sm transition-colors duration-300 hover:text-yellow-400">
                   <h3>{post.data.title}</h3>
-                  <time class="text-gray-400 text-sm shrink-0">{post.data.pubDate.toLocaleDateString("en-US", options)}</time>
+                  <time class="text-gray-400 text-xs shrink-0">{post.data.pubDate.toLocaleDateString("en-US", options)}</time>
                 </a>
               </li>
             ))}
           </ul>
         </div>
-      
+
       <!-- About me -->
-      <div class="mt-12"> 
+      <div class="mt-12">
         <h2 class="text-xl font-bold mb-4">About Me</h2>
         <OvalGlowBox>
           <p class="text-gray-200 mb-4">
             My friends call me Seba. I am a <strong class="text-yellow-500">Data & AI Engineer</strong> from Chile, working where data engineering, automation and applied AI meet real product problems.
           </p>
           <p class="text-gray-200 mb-4">
-            <strong class="text-yellow-400">Since June 2026 I have been working as a Data Engineer at Drimo - LATAM Airlines</strong>, building ETL processes and automations on GCP. Before that, I worked in retail and insurance, improving analytics workflows, cloud data pipelines and machine learning systems used by business teams.
-          </p>
-          <p class="text-gray-200 mb-4">
-            I like building with a clear product angle: Nuku explores how families can keep health records under control, Dream Home makes Chilean home buying decisions easier to compare, and AI Memory Vault turns AI coding sessions into searchable engineering memory.
+            I like building with a clear product angle: Kibura explores how families can keep health records under control, Dream Home makes Chilean home buying decisions easier to compare, and AI Memory Vault turns AI coding sessions into searchable engineering memory.
           </p>
           <p class="text-gray-200 mb-4">
             My research background is in <strong class="text-yellow-400">Vision AI for cultural heritage</strong>, including detection and segmentation of repetitive patterns in ancient Peruvian pottery. That work shaped how I think about applied AI: useful models need context, workflows and a way to be inspected by humans.
@@ -122,45 +160,6 @@ var options = { year: 'numeric', month: 'long', day: 'numeric' };
         </div>
       </div>
 
-      <div class="mt-12">
-        <h2 class="text-xl font-bold mt-12 mb-6">Projects</h2>
-
-        {projectCategories.map((category) => {
-          const categoryProjects = featuredProjects.filter((project) => project.category === category);
-
-          if (categoryProjects.length === 0) {
-            return null;
-          }
-
-          return (
-            <div class="mb-8">
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-emerald-400 text-lg">●</span>
-                <h3 class="text-sm font-medium text-gray-400 uppercase tracking-wider">{category}</h3>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {categoryProjects.map((project) => (
-                  <ProjectCardCompact
-                    title={project.title}
-                    description={project.description}
-                    impact={project.impact}
-                    icon={project.icon}
-                    accentColor={project.accentColor}
-                    status={project.status}
-                    tags={project.tags}
-                    href={project.href}
-                  />
-                ))}
-              </div>
-            </div>
-          );
-        })}
-
-        <a href="/projects" class="inline-block text-sm text-gray-400 hover:text-yellow-400 transition-colors">
-          View all projects -&gt;
-        </a>
-      </div>
-      
     </div>
   </div>
 </Layout>

@@ -9,6 +9,7 @@ export interface Project {
   category: ProjectCategory;
   status: ProjectStatus;
   icon: string;
+  logo?: string;
   accentColor: AccentColor;
   tags: string[];
   href: string;
@@ -18,16 +19,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'Nuku',
+    title: 'Kibura',
     description:
-      'Local-first, self-hosted health tracker for families managing blood pressure, glucose and insulin records.',
+      'Web platform with secure login for families to manage clinical health data: blood pressure, glucose and insulin records.',
     impact:
-      'Built for private family care workflows with multi-patient tracking, daily summaries, trend charts, Excel export and an optional Telegram bot.',
+      'Built for family care coordination with multi-patient tracking, daily summaries, trend charts, Excel export and an optional Telegram bot.',
     category: 'Products',
     status: 'Active',
     icon: '+',
+    logo: '/kibura-logo.png',
     accentColor: 'rose',
-    tags: ['Next.js', 'PostgreSQL', 'Prisma', 'Telegram'],
+    tags: [],
     href: 'https://health-trackerweb-production.up.railway.app/login',
     featured: true,
   },
@@ -41,7 +43,7 @@ export const projects: Project[] = [
     status: 'Active',
     icon: 'DH',
     accentColor: 'emerald',
-    tags: ['Next.js', 'TypeScript', 'Maps', 'Real Estate'],
+    tags: [],
     href: 'https://dream-home-pi.vercel.app/',
     featured: true,
   },
@@ -55,7 +57,7 @@ export const projects: Project[] = [
     status: 'Open source',
     icon: 'AI',
     accentColor: 'sky',
-    tags: ['Python', 'CLI', 'FastAPI', 'AI Agents'],
+    tags: [],
     href: 'https://github.com/sbsepul/ai-memory-vault',
     repo: 'https://github.com/sbsepul/ai-memory-vault',
     featured: true,
@@ -70,7 +72,7 @@ export const projects: Project[] = [
     status: 'Research',
     icon: 'CV',
     accentColor: 'violet',
-    tags: ['Python', 'Computer Vision', 'Deep Learning'],
+    tags: [],
     href: 'https://github.com/sbsepul/Repetitive-Archetypes-Patterns-Dataset',
     repo: 'https://github.com/sbsepul/Repetitive-Archetypes-Patterns-Dataset',
     featured: true,

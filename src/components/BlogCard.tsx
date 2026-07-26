@@ -10,23 +10,24 @@ interface BlogCardProps {
 
 const BlogCard = ({ title, description, date, slug }: BlogCardProps) => {
   return (
-    <article className="group border border-dark-muted rounded-lg p-4 sm:p-6 hover:border-dark-accent transition-[border-color,transform] duration-200 hover:scale-[1.02]">
-      <h2 className="text-xl sm:text-2xl font-bold mb-2">
-        <a href={`/blog/${slug}`} className="hover:text-dark-accent transition-colors">
+    <a
+      href={`/blog/${slug}`}
+      className="group block border border-dark-muted rounded-lg p-3 sm:p-4 hover:border-dark-accent transition-[border-color,transform] duration-200 hover:scale-[1.01]"
+    >
+      <div className="flex items-center justify-between gap-4">
+        <h2 className="text-base sm:text-lg font-bold group-hover:text-dark-accent transition-colors">
           {title}
-        </a>
-      </h2>
-      <p className="text-dark-muted mb-4">{description}</p>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center text-dark-muted">
-          <FaCalendar className="mr-2" />
-          <span className="text-sm">{date}</span>
-        </div>
-        <div className="transition-transform duration-200 group-hover:translate-x-1">
-          <FaArrowRight className="text-dark-muted hover:text-dark-accent transition-colors" />
+        </h2>
+        <div className="transition-transform duration-200 group-hover:translate-x-1 shrink-0">
+          <FaArrowRight className="text-dark-muted group-hover:text-dark-accent transition-colors text-sm" />
         </div>
       </div>
-    </article>
+      <p className="text-dark-muted text-sm mt-1 mb-2 line-clamp-1">{description}</p>
+      <div className="flex items-center text-dark-muted">
+        <FaCalendar className="mr-2 text-xs" />
+        <span className="text-xs">{date}</span>
+      </div>
+    </a>
   );
 };
 
